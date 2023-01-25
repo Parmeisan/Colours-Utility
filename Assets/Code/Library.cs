@@ -312,15 +312,18 @@ public class Library : Singleton<Library>
         return new_texture;
     }
 
-    public const float TOLERANCE = .05f;
-    public const float c00 = TOLERANCE;
-    public const float cFF = 1f - TOLERANCE;
-    public static bool isBlack(Color px) {
-        return px.r < c00 && px.g < c00 && px.b < c00;
+    protected const float TOLERANCE = .05f;
+    protected static bool is00(float c) { return c < TOLERANCE; }
+    protected static bool isFF(float c) { return c >= (1f - TOLERANCE); }
+    protected static bool isSame(float c1, float c2) { return Mathf.Abs(c1 - c2) < TOLERANCE; }
+
+    public static bool isBlack(Color px)
+    {
+        return is00(px.r) && is00(px.g) && is00(px.b);
     }
     public static bool isWhite(Color px)
     {
-        return px.r >= cFF && px.g >= cFF && px.b >= cFF;
+        return isFF(px.r) && isFF(px.g) && isFF(px.b);
     }
     public static bool isTransparent(Color px)
     {
@@ -328,22 +331,22 @@ public class Library : Singleton<Library>
     }
     public static bool isGrey(Color px)
     {
-        return Mathf.Abs(px.r - px.b) < TOLERANCE && Mathf.Abs(px.r - px.g) < TOLERANCE;
+        return isSame(px.r, px.b) && isSame(px.r, px.g);
     }
     // A colour is precisely magenta when RGB is FF00FF
     // It's a ligher shade of magenta if R and B are both FF, but G varies depending on the lightness (where FF becomes white)
     // It's a darker shade of magenta if G is 00 and R/B are the SAME but depend again on darkness (where 00 becomes black)
     public static bool isMagenta(Color px)
     {
-        return (px.r >= cFF && px.b >= cFF) || (px.g < c00 && px.r - px.b < TOLERANCE);
+        return (isFF(px.r) && isFF(px.b)) || (is00(px.g) && isSame(px.r, px.b));
     }
     public static bool isYellow(Color px)
     {
-        return (px.r >= cFF && px.g >= cFF) || (px.b < c00 && px.r - px.g < TOLERANCE);
+        return (isFF(px.r) && isFF(px.g)) || (is00(px.b) && isSame(px.r, px.g));
     }
     public static bool isCyan(Color px)
     {
-        return (px.g >= cFF && px.b >= cFF) || (px.r < c00 && px.b - px.g < TOLERANCE);
+        return (isFF(px.g) && isFF(px.b)) || (is00(px.r) && isSame(px.b, px.g));
     }
 
 
