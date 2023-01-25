@@ -3288,15 +3288,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2130943084915617136, guid: 692fa97716e1d0b45ab002f4a9b0db5b, type: 3}
       propertyPath: startingColor.b
-      value: 0.4
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 2130943084915617136, guid: 692fa97716e1d0b45ab002f4a9b0db5b, type: 3}
       propertyPath: startingColor.g
-      value: 0.4
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 2130943084915617136, guid: 692fa97716e1d0b45ab002f4a9b0db5b, type: 3}
       propertyPath: startingColor.r
-      value: 0.4
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 2130943084915617136, guid: 692fa97716e1d0b45ab002f4a9b0db5b, type: 3}
       propertyPath: onColorChange.m_PersistentCalls.m_Calls.Array.size
