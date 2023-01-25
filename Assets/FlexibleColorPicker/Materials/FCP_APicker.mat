@@ -83,10 +83,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.6886792, g: 0.05021619, b: 0, a: 0}
-    - _Color2: {r: 0.6886792, g: 0.05021619, b: 0, a: 1}
+    - _Color1: {r: 0, g: 0.05555887, b: 0.4245283, a: 0}
+    - _Color2: {r: 0, g: 0.05555887, b: 0.4245283, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HSV: {r: 0.01215298, g: 1, b: 0.6886792, a: 1}
+    - _HSV: {r: 0.64486545, g: 1, b: 0.4245283, a: 1}
     - _HSV_MAX: {r: 1, g: 1, b: 1, a: 0}
     - _HSV_MIN: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
