@@ -317,6 +317,11 @@ public class Library : Singleton<Library>
     protected static bool isFF(float c) { return c >= (1f - TOLERANCE); }
     protected static bool isSame(float c1, float c2) { return Mathf.Abs(c1 - c2) < TOLERANCE; }
 
+    // Main colours
+    public static bool isTransparent(Color px)
+    {
+        return px.a < TOLERANCE;
+    }
     public static bool isBlack(Color px)
     {
         return is00(px.r) && is00(px.g) && is00(px.b);
@@ -324,10 +329,6 @@ public class Library : Singleton<Library>
     public static bool isWhite(Color px)
     {
         return isFF(px.r) && isFF(px.g) && isFF(px.b);
-    }
-    public static bool isTransparent(Color px)
-    {
-        return px.a < TOLERANCE;
     }
     public static bool isGrey(Color px)
     {
@@ -356,16 +357,16 @@ public class Library : Singleton<Library>
         return new Color(avg, avg, avg);
     }
     // VERY close to the colourize operation in GIMP
-    protected static float cPixel(float i, float m)
-    {
-        return i * m * 1.5f;
-    }
     protected static Color colourize(Color i, Color m)
     {
-        Color result = new Color(cPixel(i.r, m.r),
-                                 cPixel(i.g, m.g),
-                                 cPixel(i.b, m.b));
+        Color result = new Color(colourizeRGB(i.r, m.r),
+                                 colourizeRGB(i.g, m.g),
+                                 colourizeRGB(i.b, m.b));
         return result;
+    }
+    protected static float colourizeRGB(float i, float m)
+    {
+        return i * m * 1.5f;
     }
 
 
